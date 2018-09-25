@@ -1,1 +1,1 @@
-Component repositoty
+Component Repository
