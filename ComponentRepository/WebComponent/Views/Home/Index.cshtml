@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "Component Repository";
+}
+<div class="row">
+    <div class="col-sm-8">
+        <h1>Components</h1>
+    </div>
+    <div class="col-sm-4">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for...">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Go!</button>
+            </span>
+        </div><!-- /input-group -->
+    </div>
+</div>
+<!-- Component Pannel -->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row" data-toggle="collapse" data-target="#collapseOne">
+            <div class="col-sm-8"><h3 class="panel-title">List</h3></div>
+            <div class="col-sm-4">
+                <div class="pull-right">
+                    <button type="button" class="btn btn-default btn-sm" data-toggle="collapse" data-target="#collapseOne">
+                        <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm">
+                        <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <p><code>List</code> is the container type used to define to-many relationships.</p>
+        <div id="collapseOne" class="panel-collapse collapse">
+            <p>Like <code>Array</code>, <code>List</code> is a generic type that is parameterized on the type it stores. This can be either an Object subclass or one of the following types: <code>Bool</code>, <code>Int</code>, <code>Int8</code>, <code>Int16</code>, <code>Int32</code>, <code>Int64</code>, <code>Float</code>, <code>Double</code>, <code>String</code>, <code>Data</code>, and <code>Date</code></p>
+            <h4>Interfaces</h4>
+            <ul>
+                <li><code>init()</code></li>
+                <li><code>index(matching:)</code></li>
+                <li><code>index(matching:_:)</code></li>
+                <li><code>index(of:)</code></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- ./Component Pannel -->
+<!-- Component Pannel -->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row" data-toggle="collapse" data-target="#collapseTwo">
+            <div class="col-sm-8"><h3 class="panel-title">Component Title</h3></div>
+            <div class="col-sm-4">
+                <div class="pull-right">
+                    <button type="button" class="btn btn-default btn-sm" data-toggle="collapse" data-target="#collapseTwo">
+                        <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm">
+                        <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        Component Description
+        <div id="collapseTwo" class="panel-collapse collapse">
+            <h4>Interfaces</h4>
+            <ul>
+                <li>test</li>
+                <li>test</li>
+                <li>test</li>
+                <li>test</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- ./Component Pannel -->
+<nav aria-label="Page navigation">
+    <ul class="pagination">
+        <li>
+            <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li>
+            <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
