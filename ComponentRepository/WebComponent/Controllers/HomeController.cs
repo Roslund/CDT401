@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using RepositoryComponent;
 
 namespace WebComponent.Controllers
 {
@@ -10,19 +11,16 @@ namespace WebComponent.Controllers
     {
         public ActionResult Index()
         {
+            IWeb repo = new RepositoryService();
+            ViewBag.Components = repo.GetComponents();
             return View();
         }
 
-        public ActionResult Download()
+        public ActionResult Download(int id)
         {
-            var componentID = this.Request.QueryString["id"];
-            if (componentID == null)
-            {
-                return new HttpNotFoundResult("No Component specified");
-            }
-
-            byte[] compBinary = null;
-            return File(compBinary, "application/x-msdownload");
+            IWeb repo = new RepositoryService();
+            // application/x-msdownload
+            return File(repo.DownloadComponent(id), "application/octet-stream", "test.dll");
         }
     }
 }
