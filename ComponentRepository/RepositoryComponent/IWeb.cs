@@ -7,6 +7,6 @@ namespace RepositoryComponent
     public interface IWeb
     {
         List<Component> GetComponents();
-        byte[] DownloadComponent(int id);
+        (byte[] content, string fileName) DownloadComponent(int id);
     }
 }
