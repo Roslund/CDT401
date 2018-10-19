@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RepositoryComponent;
 using System.Data.Linq;
 using System.Linq;
+using System.IO;
 
 
 namespace UnitTestRepositoryComponent
@@ -20,8 +21,25 @@ namespace UnitTestRepositoryComponent
                     Title = "TestComponent",
                     ShortDescription = "This is a test component",
                     LongDescription = "this component test that the database connection works.",
-                    Metadata = "this should be json",
-                    Content = null
+                    Metadata = @"{
+    'classes': [
+    ],
+    'interfaces': {
+        'Collection': [
+            'subscript(position: Self.Index) -> Self.Element { get }',
+            'mutating func popFirst() -> Self.Element?',
+            'mutating func shuffle()',
+            'mutating func removeFirst(_ k: Int)',
+            'func split(separator: Self.Element, maxSplits: Int = default, omittingEmptySubsequences: Bool = default) -> [Self.SubSequence]'
+        ],
+        'MutableCollection': [
+            'mutating func reverse()',
+            'mutating func shuffle()',
+            'mutating func sort()'
+        ]
+    }
+}",
+                    Content = File.ReadAllBytes("c:/atl.dll")
                 };
                 db.Components.Add(testComponent);
                 db.SaveChanges();
