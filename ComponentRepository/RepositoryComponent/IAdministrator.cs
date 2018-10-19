@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RepositoryComponent
 {
-    interface IAdministrator: IWeb
+    public interface IAdministrator: IWeb
     {
         bool AddComponent(Component component);
         bool UpdateComponent(Component component);

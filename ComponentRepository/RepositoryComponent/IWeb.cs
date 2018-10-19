@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RepositoryComponent
 {
-    interface IWeb
+    public interface IWeb
     {
         List<Component> GetComponents();
         byte[] DownloadComponent(int id);
