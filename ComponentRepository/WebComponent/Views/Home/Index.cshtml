@@ -14,6 +14,53 @@
         </div><!-- /input-group -->
     </div>
 </div>
+@foreach (var component in ViewBag.Components as List<RepositoryComponent.Component>) {
+<!-- Component Pannel -->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row" data-toggle="collapse" data-target="#collapse@{@component.Id}">
+            <div class="col-sm-8"><h3 class="panel-title">@component.Title</h3></div>
+            <div class="col-sm-4">
+                <div class="pull-right">
+                    <button type="button" class="btn btn-default btn-sm" data-toggle="collapse" data-target="#collapse@{@component.Id}">
+                        <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+                    </button>
+                    <a href="@Url.Action("Download")?id=@component.Id" class="btn btn-primary btn-sm">
+                        <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <p>@component.ShortDescription</p>
+        <div id="collapse@{@component.Id}" class="panel-collapse collapse">
+            <p>@component.LongDescription</p>
+            @{
+                var metadata = Newtonsoft.Json.Linq.JObject.Parse(component.Metadata);
+            }
+            @if (metadata["interfaces"] != null)
+            {
+                <h4>Interfaces</h4>
+                <ul>
+                    @foreach (KeyValuePair<string, List<string>> keyValuePair in metadata["interfaces"].ToObject<Dictionary<string, List<string>>>())
+                    {
+                        <li>@keyValuePair.Key
+                        <ul>
+                            @foreach (var value in keyValuePair.Value)
+                            {
+                                <li><code>@value</code></li>
+                            }
+                        </ul>
+                        </li>
+                    }
+                </ul>
+             }
+        </div>
+    </div>
+</div>
+<!-- ./Component Pannel -->
+}
 <!-- Component Pannel -->
 <div class="panel panel-default">
     <div class="panel-heading">
