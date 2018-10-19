@@ -25,7 +25,7 @@
                     <button type="button" class="btn btn-default btn-sm" data-toggle="collapse" data-target="#collapse@{@component.Id}">
                         <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
                     </button>
-                    <a href="@Url.Action("Download")?id=@component.Id" class="btn btn-primary btn-sm">
+                    <a href="@Url.Action("Download")?id=@component.Id" onclick="event.stopPropagation()" class="btn btn-primary btn-sm">
                         <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
                     </a>
                 </div>
