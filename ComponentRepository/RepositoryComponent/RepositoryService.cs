@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RepositoryComponent
 {
-    class RepositoryService : IWeb, IAdministrator
+    public class RepositoryService : IWeb, IAdministrator
     {
         public bool AddComponent(Component component)
         {
