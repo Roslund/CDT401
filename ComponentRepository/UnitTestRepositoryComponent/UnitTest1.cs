@@ -23,8 +23,8 @@ namespace UnitTestRepositoryComponent
                     LongDescription = "this component test that the database connection works.",
                     FileName = "atl.dll",
                     Metadata = @"{
-    'classes': [
-    ],
+    'classes': {
+    },
     'interfaces': {
         'Collection': [
             'subscript(position: Self.Index) -> Self.Element { get }',
