@@ -40,7 +40,7 @@ namespace UnitTestRepositoryComponent
         ]
     }
 }",
-                    Content = File.ReadAllBytes("c:/atl.dll")
+                    Content = File.ReadAllBytes("C:/Windows/System32/atl.dll")
                 };
                 db.Components.Add(testComponent);
                 db.SaveChanges();
