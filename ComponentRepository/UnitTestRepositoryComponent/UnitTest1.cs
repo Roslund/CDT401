@@ -21,6 +21,7 @@ namespace UnitTestRepositoryComponent
                     Title = "TestComponent",
                     ShortDescription = "This is a test component",
                     LongDescription = "this component test that the database connection works.",
+                    FileName = "atl.dll",
                     Metadata = @"{
     'classes': [
     ],

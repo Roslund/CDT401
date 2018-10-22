@@ -13,11 +13,12 @@ namespace RepositoryComponent
             throw new NotImplementedException();
         }
 
-        public byte[] DownloadComponent(int id)
+        public (byte[] content, string fileName) DownloadComponent(int id)
         {
             using (var db = new ComponentContext())
             {
-                return db.Components.Find(id).Content;
+                var component = db.Components.Find(id);
+                return (component.Content, component.FileName);
             }
         }
 

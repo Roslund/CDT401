@@ -20,7 +20,8 @@ namespace WebComponent.Controllers
         {
             IWeb repo = new RepositoryService();
             // application/x-msdownload
-            return File(repo.DownloadComponent(id), "application/octet-stream", "test.dll");
+            var (content, fileName) = repo.DownloadComponent(id);
+            return File(content, "application/octet-stream", fileName);
         }
     }
 }
