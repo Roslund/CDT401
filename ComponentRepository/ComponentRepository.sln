@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestRepositoryComponent
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryComponent", "RepositoryComponent\RepositoryComponent.csproj", "{5FDDB900-F30B-41D8-8DCC-F274A654EB39}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetComponent", "netComponent\DotNetComponent.csproj", "{F1A81FBE-FBD5-4039-9007-4877812F6A53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetComponentTests", "DotNetComponentTests\DotNetComponentTests.csproj", "{04BC0E29-8979-4AD2-B6CB-4FD774275CBB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{5FDDB900-F30B-41D8-8DCC-F274A654EB39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FDDB900-F30B-41D8-8DCC-F274A654EB39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FDDB900-F30B-41D8-8DCC-F274A654EB39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1A81FBE-FBD5-4039-9007-4877812F6A53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1A81FBE-FBD5-4039-9007-4877812F6A53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1A81FBE-FBD5-4039-9007-4877812F6A53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1A81FBE-FBD5-4039-9007-4877812F6A53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04BC0E29-8979-4AD2-B6CB-4FD774275CBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04BC0E29-8979-4AD2-B6CB-4FD774275CBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04BC0E29-8979-4AD2-B6CB-4FD774275CBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04BC0E29-8979-4AD2-B6CB-4FD774275CBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
