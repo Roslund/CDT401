@@ -9,7 +9,7 @@ namespace netComponent
 {
     public class DotNetParser : IComponentParser
     {
-        public string parseComponentFile(byte[] file)
+        public string ParseComponentFile(byte[] file)
         {
             try
             {
@@ -34,9 +34,9 @@ namespace netComponent
                 string jsonTemplate = classes + interfaces;
                 return jsonTemplate;
             }
-            catch (BadImageFormatException e)
+            catch (BadImageFormatException)
             {
-                return "{error caused by wrong component format}";
+                return "{ 'error': 'caused by wrong component format'}";
             }
         }
 
