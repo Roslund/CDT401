@@ -21,8 +21,8 @@ namespace netComponent.Tests
             byte[] dllFile = new byte[3];
             try
             {
-                Assert.AreNotSame(parser.ParseComponentFile(dllFile), "test");
-            }catch (BadImageFormatException)
+                parser.ParseComponentFile(dllFile);
+            }catch(BadImageFormatException)
             {
                 Console.WriteLine("Bad byteFile");
             }
@@ -36,7 +36,7 @@ namespace netComponent.Tests
             Console.WriteLine(dllFile.Length);
             Console.WriteLine(dllFile[dllFile.Length-1]);
             Console.WriteLine("test test tesst test test");
-            Assert.AreNotSame(parser.ParseComponentFile(dllFile), "test");
+            parser.ParseComponentFile(dllFile);
         }
 
         [TestMethod()]
@@ -65,7 +65,7 @@ namespace netComponent.Tests
             interfaces = interfaces.Substring(0, interfaces.Length - 3) + "]}";
             string json = classes + interfaces;
 
-            Assert.AreNotSame(parser.ParseComponentFile(dllFile), "test");
+            parser.ParseComponentFile(dllFile);
         }
 
         [TestMethod()]

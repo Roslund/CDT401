@@ -34,9 +34,9 @@ namespace netComponent
                 string jsonTemplate = classes + interfaces;
                 return jsonTemplate;
             }
-            catch (BadImageFormatException e)
+            catch (BadImageFormatException)
             {
-                return "{ 'error':  'caused by wrong component format'}";
+                return "{ 'error': 'caused by wrong component format'}";
             }
         }
 
