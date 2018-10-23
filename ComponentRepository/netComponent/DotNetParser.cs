@@ -9,7 +9,7 @@ namespace netComponent
 {
     public class DotNetParser : IComponentParser
     {
-        public string parseComponentFile(byte[] file)
+        public string ParseComponentFile(byte[] file)
         {
             try
             {
@@ -36,7 +36,7 @@ namespace netComponent
             }
             catch (BadImageFormatException e)
             {
-                return "{error caused by wrong component format}";
+                return "{ 'error':  'caused by wrong component format'}";
             }
         }
 

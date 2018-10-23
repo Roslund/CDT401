@@ -8,6 +8,6 @@ namespace netComponent
 {
     public interface IComponentParser
     {
-        String parseComponentFile(byte[] file);
+        String ParseComponentFile(byte[] file);
     }
 }
