@@ -22,11 +22,22 @@ namespace netComponent
                 {
                     if (type.IsClass)
                     {
-                        classes += "'" + type.Name + "': [] , ";
+                        classes += "'" + type.Name + "': [";
+
+                        foreach (var method in type.GetMethods())
+                        {
+                            classes += "'" + method.ToString() + "',";
+                        }
+                        classes += "] , ";
                     }
                     else if (type.IsInterface)
                     {
-                        interfaces += "'" + type.Name + "': [] , ";
+                        interfaces += "'" + type.Name + "': [";
+                        foreach (var method in type.GetMethods())
+                        {
+                            interfaces += "'" + method.ToString() + "',";
+                        }
+                        interfaces += "] , ";
                     }
                 }
                 classes = classes.Substring(0, classes.Length - 3) + "},";
