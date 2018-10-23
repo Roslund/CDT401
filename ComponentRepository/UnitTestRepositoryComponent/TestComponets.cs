@@ -9,10 +9,10 @@ using System.IO;
 namespace UnitTestRepositoryComponent
 {
     [TestClass]
-    public class UnitTest1
+    public class TestComponets
     {
         [TestMethod]
-        public void TestAddComponent()
+        public void AddTestComponent()
         {
             using (var db = new ComponentContext())
             {
@@ -49,7 +49,7 @@ namespace UnitTestRepositoryComponent
         }
 
         [TestMethod]
-        public void TestDeletComponent()
+        public void DeletTestComponent()
         {
             using (var db = new ComponentContext())
             {

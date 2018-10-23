@@ -10,7 +10,44 @@ namespace RepositoryComponent
     {
         public bool AddComponent(Component component)
         {
-            throw new NotImplementedException();
+            // componentParser parser;
+            switch (component.FileName.Split('.') .Last())
+            {
+                case "jar":
+                    throw new NotImplementedException();
+                    //parser = new JavaParser();
+                    break;
+                case "dll":
+                    throw new NotImplementedException();
+                    //parser = new NetParser();
+                    break;
+                default:
+                    return false;
+            }
+
+            //component.Metadata = parser.parse(componet.Content)
+            // Since we got no error we asue it was success!
+            if (component.Metadata != "Error")
+            {
+                using (var db = new ComponentContext())
+                {
+                    db.Components.Add(component);
+                    db.SaveChanges();
+                }
+                return true;
+            }
+
+            //parser = new COMParser()
+            //component.Metadata = parser.parse(componet.Content)
+            if (component.Metadata != "Error")
+            {
+                using (var db = new ComponentContext())
+                {
+                    db.Components.Add(component);
+                    db.SaveChanges();
+                }
+                return true;
+            }
         }
 
         public (byte[] content, string fileName) DownloadComponent(int id)
