@@ -15,38 +15,32 @@ namespace netComponent.Tests
     public class DotNetParserTests
     {
         [TestMethod()]
-        public void MainTest()
-        {
-            Assert.IsTrue(1==1,"Test");
-        }
-
-        [TestMethod()]
-        public void testImplementation()
+        public void TestImplementation()
         {
             IComponentParser parser = new DotNetParser();
             byte[] dllFile = new byte[3];
             try
             {
-                Assert.AreNotSame(parser.parseComponentFile(dllFile), "test");
-            }catch(BadImageFormatException n)
+                parser.ParseComponentFile(dllFile);
+            }catch(BadImageFormatException)
             {
                 Console.WriteLine("Bad byteFile");
             }
         }
 
         [TestMethod()]
-        public void testByteConverter()
+        public void TestByteConverter()
         {
             IComponentParser parser = new DotNetParser();
             byte[] dllFile = File.ReadAllBytes("C:\\Users\\milos\\OneDrive\\Desktop\\Mr MDH\\ComponentTechnologies\\Project\\ComponentRepository\\netComponent\\netComponent\\netComponent\\bin\\Debug\\netComponent.dll");
             Console.WriteLine(dllFile.Length);
             Console.WriteLine(dllFile[dllFile.Length-1]);
             Console.WriteLine("test test tesst test test");
-            Assert.AreNotSame(parser.parseComponentFile(dllFile), "test");
+            parser.ParseComponentFile(dllFile);
         }
 
         [TestMethod()]
-        public void testReflection()
+        public void TestReflection()
         {
             IComponentParser parser = new DotNetParser();
             String rightPathtest = "C:\\Users\\milos\\OneDrive\\Desktop\\Mr MDH\\ComponentTechnologies\\Project\\ComponentRepository\\netComponent\\netComponent\\netComponent\\bin\\Debug\\netComponent.dll";
@@ -71,15 +65,15 @@ namespace netComponent.Tests
             interfaces = interfaces.Substring(0, interfaces.Length - 3) + "]}";
             string json = classes + interfaces;
 
-            Assert.AreNotSame(parser.parseComponentFile(dllFile), "test");
+            parser.ParseComponentFile(dllFile);
         }
 
         [TestMethod()]
-        public void testParsing()
+        public void TestParsing()
         {
             IComponentParser parser = new DotNetParser();
             byte[] dllFile = File.ReadAllBytes("C:\\Users\\milos\\OneDrive\\Desktop\\Mr MDH\\ComponentTechnologies\\Project\\ComponentRepository\\netComponent\\netComponent\\netComponent\\bin\\Debug\\netComponent.dll");
-            String json = parser.parseComponentFile(dllFile);
+            String json = parser.ParseComponentFile(dllFile);
             Boolean containsClasses = json.Contains("DotNetParser");
             Boolean containsInterfaces = json.Contains("IComponentParser");
 
