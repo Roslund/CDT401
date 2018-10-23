@@ -13,7 +13,7 @@ namespace ExecutableProjectTest
         static void Main(string[] args)
         {
             IComponentParser parser = new DotNetParser();
-            byte[] dllFile = File.ReadAllBytes("C:\\Users\\milos\\OneDrive\\Desktop\\Mr MDH\\ComponentTechnologies\\Project\\ComponentRepository\\netComponent\\netComponent\\netComponent\\bin\\Debug\\netComponent.dll");
+            byte[] dllFile = File.ReadAllBytes("C:\\Users\\milos\\OneDrive\\Desktop\\Mr MDH\\ComponentTechnologies\\Project\\ComponentRepository\\netComponent\\netComponent\\ExecutableProjectTest\\bin\\Debug\\ExecutableProjectTest.xe");
             Console.WriteLine(parser.parseComponentFile(dllFile));
         }
     }

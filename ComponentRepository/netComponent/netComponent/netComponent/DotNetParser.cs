@@ -11,26 +11,33 @@ namespace netComponent
     {
         public string parseComponentFile(byte[] file)
         {
-            Assembly assembly = Assembly.ReflectionOnlyLoad(file);
-            Console.WriteLine(assembly.ToString());
-            String classes = "{ 'classes' : [";
-            String interfaces = "'interfaces' : [";
-
-            foreach (Type type in assembly.GetTypes())
+            try
             {
-                if (type.IsClass)
+                Assembly assembly = Assembly.ReflectionOnlyLoad(file);
+                Console.WriteLine(assembly.ToString());
+                String classes = "{ 'classes' : [";
+                String interfaces = "'interfaces' : [";
+
+                foreach (Type type in assembly.GetTypes())
                 {
-                    classes += type.Name + " , ";
+                    if (type.IsClass)
+                    {
+                        classes += type.Name + " , ";
+                    }
+                    else if (type.IsInterface)
+                    {
+                        interfaces += type.Name + " , ";
+                    }
                 }
-                else if (type.IsInterface)
-                {
-                    interfaces += type.Name + " , ";
-                }
+                classes = classes.Substring(0, classes.Length - 3) + "],";
+                interfaces = interfaces.Substring(0, interfaces.Length - 3) + "]}";
+                string jsonTemplate = classes + interfaces;
+                return jsonTemplate;
             }
-            classes = classes.Substring(0, classes.Length - 3) + "],";
-            interfaces = interfaces.Substring(0, interfaces.Length - 3) + "]}";
-            string jsonTemplate = classes + interfaces;
-            return jsonTemplate;
+            catch (BadImageFormatException e)
+            {
+                return "{error caused by wrong component format}";
+            }
         }
 
     }

@@ -25,7 +25,13 @@ namespace netComponent.Tests
         {
             IComponentParser parser = new DotNetParser();
             byte[] dllFile = new byte[3];
-            Assert.AreSame(parser.parseComponentFile(dllFile),"test");
+            try
+            {
+                Assert.AreNotSame(parser.parseComponentFile(dllFile), "test");
+            }catch(BadImageFormatException n)
+            {
+                Console.WriteLine("Bad byteFile");
+            }
         }
 
         [TestMethod()]
@@ -36,14 +42,16 @@ namespace netComponent.Tests
             Console.WriteLine(dllFile.Length);
             Console.WriteLine(dllFile[dllFile.Length-1]);
             Console.WriteLine("test test tesst test test");
-            Assert.AreSame(parser.parseComponentFile(dllFile), "test");
+            Assert.AreNotSame(parser.parseComponentFile(dllFile), "test");
         }
 
         [TestMethod()]
         public void testReflection()
         {
             IComponentParser parser = new DotNetParser();
-            byte[] dllFile = File.ReadAllBytes("C:\\Users\\milos\\OneDrive\\Desktop\\Mr MDH\\ComponentTechnologies\\Project\\ComponentRepository\\netComponent\\netComponent\\netComponent\\bin\\Debug\\netComponent.dll");
+            String rightPathtest = "C:\\Users\\milos\\OneDrive\\Desktop\\Mr MDH\\ComponentTechnologies\\Project\\ComponentRepository\\netComponent\\netComponent\\netComponent\\bin\\Debug\\netComponent.dll";
+            String wrongPathtest = "C:\\Users\\milos\\OneDrive\\Desktop\\Mr MDH\\ComponentTechnologies\\Project\\ComponentRepository\\netComponent\\netComponent\\ExecutableProjectTest\\bin\\Debug\\ExecutableProjectTest.exe";
+            byte[] dllFile = File.ReadAllBytes(wrongPathtest);
             Assembly assembly = Assembly.ReflectionOnlyLoad(dllFile);
             Console.WriteLine(assembly.ToString());
             String classes = "{ 'classes' : [";
@@ -63,7 +71,7 @@ namespace netComponent.Tests
             interfaces = interfaces.Substring(0, interfaces.Length - 3) + "]}";
             string json = classes + interfaces;
 
-            Assert.AreSame(parser.parseComponentFile(dllFile), "test");
+            Assert.AreNotSame(parser.parseComponentFile(dllFile), "test");
         }
 
         [TestMethod()]
