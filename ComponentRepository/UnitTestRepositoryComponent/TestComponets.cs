@@ -6,13 +6,13 @@ using System.Linq;
 using System.IO;
 
 
-namespace UnitTestRepositoryComponent
+namespace RepositoryComponentTest
 {
     [TestClass]
-    public class UnitTest1
+    public class TestComponets
     {
         [TestMethod]
-        public void TestAddComponent()
+        public void AddTestComponent()
         {
             using (var db = new ComponentContext())
             {
@@ -23,8 +23,8 @@ namespace UnitTestRepositoryComponent
                     LongDescription = "this component test that the database connection works.",
                     FileName = "atl.dll",
                     Metadata = @"{
-    'classes': [
-    ],
+    'classes': {
+    },
     'interfaces': {
         'Collection': [
             'subscript(position: Self.Index) -> Self.Element { get }',
@@ -40,7 +40,7 @@ namespace UnitTestRepositoryComponent
         ]
     }
 }",
-                    Content = File.ReadAllBytes("c:/atl.dll")
+                    Content = File.ReadAllBytes("C:/Windows/System32/atl.dll")
                 };
                 db.Components.Add(testComponent);
                 db.SaveChanges();
@@ -49,7 +49,7 @@ namespace UnitTestRepositoryComponent
         }
 
         [TestMethod]
-        public void TestDeletComponent()
+        public void DeletTestComponent()
         {
             using (var db = new ComponentContext())
             {
