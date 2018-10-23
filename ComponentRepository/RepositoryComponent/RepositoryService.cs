@@ -32,12 +32,26 @@ namespace RepositoryComponent
 
         public bool RemoveComponent(int componentID)
         {
-            throw new NotImplementedException();
+            using (var db = new ComponentContext())
+            {
+                var component = db.Components.Find(componentID);
+                db.Components.Remove(component);
+                db.SaveChanges();
+            }
+
+            return true;
         }
 
         public bool UpdateComponent(Component component)
         {
-            throw new NotImplementedException();
+            using(var db = new ComponentContext())
+            {
+                var temp = db.Components.Find(component.Id);
+                temp = component;
+                db.SaveChanges();
+            }
+
+            return true;
         }
     }
 }
