@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28010.2041
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebComponent", "WebComponent\WebComponent.csproj", "{A166498B-02D9-48E4-B105-7A63C5568C9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestRepositoryComponent", "UnitTestRepositoryComponent\UnitTestRepositoryComponent.csproj", "{C5CEBC51-6A89-43ED-8EEE-9D58A4473FDF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryComponentTests", "UnitTestRepositoryComponent\RepositoryComponentTests.csproj", "{C5CEBC51-6A89-43ED-8EEE-9D58A4473FDF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryComponent", "RepositoryComponent\RepositoryComponent.csproj", "{5FDDB900-F30B-41D8-8DCC-F274A654EB39}"
 EndProject

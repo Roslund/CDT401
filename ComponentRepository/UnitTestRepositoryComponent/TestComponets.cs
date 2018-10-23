@@ -6,7 +6,7 @@ using System.Linq;
 using System.IO;
 
 
-namespace UnitTestRepositoryComponent
+namespace RepositoryComponentTest
 {
     [TestClass]
     public class TestComponets

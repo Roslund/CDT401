@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RepositoryComponent;
 using System.Linq;
 
-namespace UnitTestRepositoryComponent
+namespace RepositoryComponentTest
 {
     [TestClass]
     public class TestAddComponent
