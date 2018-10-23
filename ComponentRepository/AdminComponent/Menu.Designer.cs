@@ -1,4 +1,6 @@
-﻿namespace AdminComponent
+﻿using System.Windows.Forms;
+
+namespace AdminComponent
 {
     partial class Menu
     {
@@ -20,21 +22,47 @@
             base.Dispose(disposing);
         }
 
+        protected void NewItemList(int x)
+        {
+            Panel NewItem = new Panel();
+            Label LabelTitle = new Label();
+
+            //param LABEL
+            LabelTitle.AutoSize = true;
+            LabelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            LabelTitle.Location = new System.Drawing.Point(3, 39);
+            LabelTitle.Name = "label";
+            LabelTitle.Size = new System.Drawing.Size(262, 20);
+            LabelTitle.TabIndex = 5;
+            LabelTitle.Text = "Short description of the component.";
+            LabelTitle.Click += new System.EventHandler(this.label16_Click);
+
+            NewItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            NewItem.Controls.Add(LabelTitle);
+            NewItem.Controls.Add(this.button7);
+            NewItem.Controls.Add(this.button8);
+            NewItem.Controls.Add(this.button9);
+            NewItem.Controls.Add(this.label17);
+            NewItem.Name = "Component" + x;
+            NewItem.Size = new System.Drawing.Size(1000, 73);
+            NewItem.Visible = true;
+            flowLayoutPanel.Controls.Add(NewItem);
+        }
+
         #region Windows Form Designer generated code
 
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
+    
+
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -43,16 +71,17 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.GrandChildPanel = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
+            this.GrandChildPanel.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -64,6 +93,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Add Component";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // textBox1
             // 
@@ -87,9 +117,6 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
@@ -102,36 +129,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1000, 235);
             this.panel1.TabIndex = 3;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(17, 204);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(83, 20);
-            this.label9.TabIndex = 11;
-            this.label9.Text = "- index(of:)";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(17, 184);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(147, 20);
-            this.label8.TabIndex = 10;
-            this.label8.Text = "- index(matching:_:)";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(17, 164);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(134, 20);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "- index(matching:)";
             // 
             // label6
             // 
@@ -221,28 +218,19 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "List";
             // 
-            // panel2
+            // GrandChildPanel
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1100, 44);
-            this.panel2.TabIndex = 4;
-            // 
-            // panel4
-            // 
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.label16);
-            this.panel4.Controls.Add(this.button7);
-            this.panel4.Controls.Add(this.button8);
-            this.panel4.Controls.Add(this.button9);
-            this.panel4.Controls.Add(this.label17);
-            this.panel4.Location = new System.Drawing.Point(52, 372);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1000, 71);
-            this.panel4.TabIndex = 12;
+            this.GrandChildPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.GrandChildPanel.Controls.Add(this.label16);
+            this.GrandChildPanel.Controls.Add(this.button7);
+            this.GrandChildPanel.Controls.Add(this.button8);
+            this.GrandChildPanel.Controls.Add(this.button9);
+            this.GrandChildPanel.Controls.Add(this.label17);
+            this.GrandChildPanel.Location = new System.Drawing.Point(48, 388);
+            this.GrandChildPanel.Name = "GrandChildPanel";
+            this.GrandChildPanel.Size = new System.Drawing.Size(1000, 73);
+            this.GrandChildPanel.TabIndex = 12;
+            this.GrandChildPanel.Visible = false;
             // 
             // label16
             // 
@@ -302,13 +290,35 @@
             this.label17.TabIndex = 0;
             this.label17.Text = "Component Title";
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.button1);
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1100, 44);
+            this.panel2.TabIndex = 4;
+            // 
+            // flowLayoutPanel
+            // 
+            this.flowLayoutPanel.AutoScroll = true;
+            this.flowLayoutPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel.Location = new System.Drawing.Point(51, 371);
+            this.flowLayoutPanel.Name = "flowLayoutPanel";
+            this.flowLayoutPanel.Size = new System.Drawing.Size(1038, 218);
+            this.flowLayoutPanel.TabIndex = 5;
+            this.flowLayoutPanel.WrapContents = false;
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1084, 611);
-            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.GrandChildPanel);
+            this.Controls.Add(this.flowLayoutPanel);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
@@ -317,10 +327,10 @@
             this.Load += new System.EventHandler(this.Menu_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.GrandChildPanel.ResumeLayout(false);
+            this.GrandChildPanel.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -339,18 +349,15 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Panel GrandChildPanel;
+        private FlowLayoutPanel flowLayoutPanel;
     }
 }
 

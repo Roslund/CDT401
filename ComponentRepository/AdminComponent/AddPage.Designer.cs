@@ -26,6 +26,11 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
+        private void addListElement()
+        {
+            
+        }
+
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
@@ -180,15 +185,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1084, 611);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button3); // button x
+            this.Controls.Add(this.label5); // interdaces title
+            this.Controls.Add(this.button2); // ? button
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.panel6);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.panel6); // -interfaces informations    // button4 -> ...
+            this.Controls.Add(this.label3); //-information top
             this.Controls.Add(this.panel5);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.label2); //- title
+            this.Controls.Add(this.panel1); //-  box
             this.Controls.Add(this.label10);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label1);
