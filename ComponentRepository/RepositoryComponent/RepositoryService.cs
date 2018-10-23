@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using netComponent;
+using Newtonsoft.Json.Linq;
 
 namespace RepositoryComponent
 {
@@ -10,44 +12,46 @@ namespace RepositoryComponent
     {
         public bool AddComponent(Component component)
         {
-            // componentParser parser;
-            switch (component.FileName.Split('.') .Last())
+            IComponentParser parser;
+
+            // Check the file extention and load the apropiate parser
+            switch (component.FileName.Split('.').Last())
             {
                 case "jar":
                     throw new NotImplementedException();
                     //parser = new JavaParser();
                     break;
                 case "dll":
-                    throw new NotImplementedException();
-                    //parser = new NetParser();
+                    parser = new DotNetParser();
                     break;
                 default:
                     return false;
             }
 
-            //component.Metadata = parser.parse(componet.Content)
-            // Since we got no error we asue it was success!
-            if (component.Metadata != "Error")
+            // Parse the component
+            component.Metadata = parser.ParseComponentFile(component.Content);
+
+            // If the parsing failed we retry with the COM Parser
+            if (JObject.Parse(component.Metadata)["error"] != null)
             {
-                using (var db = new ComponentContext())
+                //parser = new COMParser();
+                component.Metadata = parser.ParseComponentFile(component.Content);
+
+                // Check for errors Again
+                if (JObject.Parse(component.Metadata)["error"] != null)
                 {
-                    db.Components.Add(component);
-                    db.SaveChanges();
+                    return false;
                 }
-                return true;
             }
 
-            //parser = new COMParser()
-            //component.Metadata = parser.parse(componet.Content)
-            if (component.Metadata != "Error")
+            // Add and save the component
+            using (var db = new ComponentContext())
             {
-                using (var db = new ComponentContext())
-                {
-                    db.Components.Add(component);
-                    db.SaveChanges();
-                }
-                return true;
+                db.Components.Add(component);
+                db.SaveChanges();
             }
+            return true;
+            
         }
 
         public (byte[] content, string fileName) DownloadComponent(int id)
