@@ -35,7 +35,7 @@ public class JavaParser implements IComponentParser
 		
 		String className;
 		Class<?> classObject;
-        FileWriter file;
+		FileWriter file;
         
 		try 
 		{
@@ -75,8 +75,8 @@ public class JavaParser implements IComponentParser
 			e.printStackTrace();
 		}
 		
-        obj.put("classes", classesDictionary);
-        obj.put("interfaces", interfacesDictionary);
+		obj.put("classes", classesDictionary);
+		obj.put("interfaces", interfacesDictionary);
              
 		try 
 		{
