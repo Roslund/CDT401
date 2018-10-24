@@ -17,7 +17,7 @@ namespace RepositoryComponent
         public byte[] Content { get; set; }
     }
 
-    public class ComponentContext : DbContext
+    internal class ComponentContext : DbContext
     {
         public DbSet<Component> Components { get; set; }
     }
