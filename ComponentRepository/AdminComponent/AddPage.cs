@@ -5,7 +5,9 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using RepositoryComponent;
 
 namespace AdminComponent
 {
@@ -16,19 +18,28 @@ namespace AdminComponent
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public AddPage(int mode, RepositoryComponent.Component component)
         {
+            InitializeComponent();
 
-        }
+            switch (mode)
+            {
+                case 1:
+                    selectButton.Enabled = false;
+                    ValidateButton.Enabled = false;
 
-        private void label1_Click(object sender, EventArgs e)
-        {
+                    TitleTextBox.Enabled = false;
+                    TitleTextBox.Text = component.Title;
+                    Console.WriteLine(component.Title);
 
-        }
+                    ShortTextBox.Enabled = false;
+                    ShortTextBox.Text = component.ShortDescription;
 
-        private void AddPage_Load(object sender, EventArgs e)
-        {
+                    LongTextBox.Enabled = false;
+                    LongTextBox.Text = component.LongDescription;
 
+                    break;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -36,14 +47,14 @@ namespace AdminComponent
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label16_Click(object sender, EventArgs e)
+        private void CancelButton_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
     }
 }
