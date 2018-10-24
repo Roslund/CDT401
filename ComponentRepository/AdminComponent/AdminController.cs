@@ -7,22 +7,31 @@ using RepositoryComponent;
 
 namespace AdminComponent
 {
-    class AdminController
+    public class AdminController
     {
         public List<Component> ComponentsList { get;set; }
 
-        public void addComponent()
+        public void addComponent(Component componentAdd)
         {
+            // send the new component with : (componentAdd)
+
+            //for test :
+            componentAdd.Id = ComponentsList.Count;
+            this.ComponentsList.Add(componentAdd);
+        }
+
+        public void removeCompoennt(int id)
+        {
+            //send request to delete with : (id)
+
+            //for test -------------------
+            ComponentsList.RemoveAll(Component => Component.Id.Equals(id));
+        }
+
+        public void editComponent(Component componentEdited)
+        {
+            // send the new component with : (componentEdited, componentEdited.Id) 
             
-        }
-
-        public void removeCompoennt()
-        {
-
-        }
-
-        public void editComponent()
-        {
 
         }
 

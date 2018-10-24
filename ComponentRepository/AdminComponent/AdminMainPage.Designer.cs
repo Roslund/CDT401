@@ -51,6 +51,7 @@
             this.EditButton = new System.Windows.Forms.Button();
             this.ViewButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.RefreshButton = new System.Windows.Forms.Button();
             this.AddPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,6 +63,7 @@
             this.Search.TabIndex = 0;
             this.Search.Text = "Search";
             this.Search.UseVisualStyleBackColor = true;
+            this.Search.Click += new System.EventHandler(this.Search_Click);
             // 
             // searchTextBox
             // 
@@ -266,11 +268,22 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // RefreshButton
+            // 
+            this.RefreshButton.Image = global::AdminComponent.Properties.Resources.refresh2;
+            this.RefreshButton.Location = new System.Drawing.Point(518, 34);
+            this.RefreshButton.Name = "RefreshButton";
+            this.RefreshButton.Size = new System.Drawing.Size(25, 25);
+            this.RefreshButton.TabIndex = 11;
+            this.RefreshButton.UseVisualStyleBackColor = true;
+            this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
+            // 
             // AdminMainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(560, 352);
+            this.Controls.Add(this.RefreshButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.ViewButton);
             this.Controls.Add(this.EditButton);
@@ -316,5 +329,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button RefreshButton;
     }
 }

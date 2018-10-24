@@ -13,13 +13,17 @@ namespace AdminComponent
 {
     public partial class AdminMainPage : Form
     {
-        private AdminController AdminController;
+        public AdminController AdminController;
 
         public AdminMainPage()
-        {          
+        {
             this.AdminController = new AdminController();
             InitializeComponent();
+            ViewButton.Enabled = false;
+            EditButton.Enabled = false;
+            RemoveButton.Enabled = false;
             InitialisationListViewComponent();
+            
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -44,20 +48,56 @@ namespace AdminComponent
 
         private void ViewButton_Click(object sender, EventArgs e)
         {
-            int idSelected = int.Parse(ListViewComponents.SelectedItems[0].Text);
-            Console.WriteLine(idSelected);
-            AddPage AddPage = new AddPage(1, AdminController.ComponentsList.Find(delegate(RepositoryComponent.Component a){ return a.Id == idSelected; }));
-            AddPage.Show();
+            try
+            {
+                int idSelected = int.Parse(ListViewComponents.SelectedItems[0].Text);
+                AddPage AddPage = new AddPage(1, this.AdminController.ComponentsList.Find(delegate (RepositoryComponent.Component a) { return a.Id == idSelected; }), this.AdminController);
+                AddPage.Show();
+            }
+            catch
+            {
+                ViewButton.Enabled = false;
+                EditButton.Enabled = false;
+                RemoveButton.Enabled = false;
+            }
+            
+  
         }
 
         private void EditButton_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                int idSelected = int.Parse(ListViewComponents.SelectedItems[0].Text);
+                AddPage AddPage = new AddPage(2, AdminController.ComponentsList.Find(delegate (RepositoryComponent.Component a) { return a.Id == idSelected; }), this.AdminController);
+                AddPage.Show();
+            }
+            catch
+            {
+                MessageBox.Show("Select a component before ...", "Confirm", MessageBoxButtons.OK);
+                ViewButton.Enabled = false;
+                EditButton.Enabled = false;
+                RemoveButton.Enabled = false;
+            }
         }
 
         private void RemoveButton_Click(object sender, EventArgs e)
         {
-
+                try
+                {
+                    if (MessageBox.Show("Are you sure?", "Confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        int idSelected = int.Parse(ListViewComponents.SelectedItems[0].Text);
+                        AdminController.removeCompoennt(idSelected);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Select a component before ...", "Confirm", MessageBoxButtons.OK);
+                    ViewButton.Enabled = false;
+                    EditButton.Enabled = false;
+                    RemoveButton.Enabled = false;
+                }
         }
 
         private void InitializePage()
@@ -70,15 +110,23 @@ namespace AdminComponent
 
         }
 
+        //ADD BUTTON---------------------
         private void button1_Click(object sender, EventArgs e)
         {
-            AddPage AddPage = new AddPage();
+            AddPage AddPage = new AddPage(this.AdminController);
             AddPage.Show();
         }
 
         private void ListViewComponents_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Console.WriteLine("Hello World");
+            ViewButton.Enabled = true;
+            EditButton.Enabled = true;
+            RemoveButton.Enabled = true;
+
+            if(ListViewComponents.SelectedIndices.Count == 0)
+            {
+
+            }
         }
 
         private void InitialisationListViewComponent()
@@ -96,6 +144,26 @@ namespace AdminComponent
                 newItem = new ListViewItem(newItemString);
                 ListViewComponents.Items.Add(newItem);
             }
+        }
+
+        private void RefreshButton_Click(object sender, EventArgs e)
+        {
+            InitialisationListViewComponent();
+        }
+
+        private void Search_Click(object sender, EventArgs e)
+        {
+            bool found = false;
+            foreach (RepositoryComponent.Component component in AdminController.ComponentsList)
+            {
+                if (component.Title == searchTextBox.Text)
+                {
+                    MessageBox.Show("I found it ! ID = " + component.Id, "Confirm", MessageBoxButtons.OK);
+                    found = true;
+                }
+            }
+            if(found == false)
+                MessageBox.Show("Not found ... ", "Confirm", MessageBoxButtons.OK);
         }
     }
 }

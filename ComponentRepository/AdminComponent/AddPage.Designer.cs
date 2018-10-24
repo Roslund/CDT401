@@ -38,6 +38,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.selectButton = new System.Windows.Forms.Button();
             this.FileSelectedLabel = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // CancelButton
@@ -119,16 +120,21 @@
             this.selectButton.TabIndex = 8;
             this.selectButton.Text = "Select File";
             this.selectButton.UseVisualStyleBackColor = true;
+            this.selectButton.Click += new System.EventHandler(this.selectButton_Click);
             // 
             // FileSelectedLabel
             // 
-            this.FileSelectedLabel.AutoSize = true;
             this.FileSelectedLabel.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.FileSelectedLabel.Location = new System.Drawing.Point(93, 547);
+            this.FileSelectedLabel.Location = new System.Drawing.Point(93, 544);
+            this.FileSelectedLabel.MaximumSize = new System.Drawing.Size(150, 30);
             this.FileSelectedLabel.Name = "FileSelectedLabel";
-            this.FileSelectedLabel.Size = new System.Drawing.Size(99, 13);
+            this.FileSelectedLabel.Size = new System.Drawing.Size(145, 30);
             this.FileSelectedLabel.TabIndex = 9;
             this.FileSelectedLabel.Text = "Nothing selected ...";
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // AddPage
             // 
@@ -164,5 +170,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button selectButton;
         private System.Windows.Forms.Label FileSelectedLabel;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
