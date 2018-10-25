@@ -20,28 +20,37 @@ namespace netComponent
 
                 foreach (Type type in assembly.GetTypes())
                 {
-                    if (type.IsClass)
+                    if (type.IsClass && type.IsPublic)
                     {
                         classes += "'" + type.Name + "': [";
 
                         foreach (var method in type.GetMethods())
                         {
-                            classes += "'" + method.ToString() + "',";
+                            if (method.IsPublic)
+                            {
+                                classes += "'" + method.ToString() + "',";
+                            }
                         }
                         classes += "] , ";
                     }
-                    else if (type.IsInterface)
+                    else if (type.IsInterface && type.IsPublic)
                     {
                         interfaces += "'" + type.Name + "': [";
+
                         foreach (var method in type.GetMethods())
                         {
-                            interfaces += "'" + method.ToString() + "',";
+                            if (method.IsPublic)
+                            {
+                                interfaces += "'" + method.ToString() + "',";
+                            }
                         }
                         interfaces += "] , ";
                     }
                 }
-                classes = classes.Substring(0, classes.Length - 3) + "},";
-                interfaces = interfaces.Substring(0, interfaces.Length - 3) + "}}";
+
+                classes += "},";
+                interfaces += "}}";
+
                 string jsonTemplate = classes + interfaces;
                 return jsonTemplate;
             }
