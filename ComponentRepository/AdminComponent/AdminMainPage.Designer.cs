@@ -44,9 +44,9 @@
             this.AddButton = new System.Windows.Forms.Button();
             this.ListViewComponents = new System.Windows.Forms.ListView();
             this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.NAME = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.TYPE = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.PATH = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TITLE = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DESCRIPTION = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.FILENAME = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.RemoveButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
             this.ViewButton = new System.Windows.Forms.Button();
@@ -196,9 +196,9 @@
             this.ListViewComponents.Activation = System.Windows.Forms.ItemActivation.OneClick;
             this.ListViewComponents.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ID,
-            this.NAME,
-            this.TYPE,
-            this.PATH});
+            this.TITLE,
+            this.FILENAME,
+            this.DESCRIPTION});
             this.ListViewComponents.FullRowSelect = true;
             this.ListViewComponents.Location = new System.Drawing.Point(15, 65);
             this.ListViewComponents.Name = "ListViewComponents";
@@ -213,20 +213,20 @@
             this.ID.Text = "ID";
             this.ID.Width = 30;
             // 
-            // NAME
+            // TITLE
             // 
-            this.NAME.Text = "NAME";
-            this.NAME.Width = 150;
+            this.TITLE.Text = "TITLE";
+            this.TITLE.Width = 150;
             // 
-            // TYPE
+            // DESCRIPTION
             // 
-            this.TYPE.Text = "TYPE";
-            this.TYPE.Width = 100;
+            this.DESCRIPTION.Text = "DESCRIPTION";
+            this.DESCRIPTION.Width = 240;
             // 
-            // PATH
+            // FILENAME
             // 
-            this.PATH.Text = "PATH";
-            this.PATH.Width = 245;
+            this.FILENAME.Text = "FILENAME";
+            this.FILENAME.Width = 150;
             // 
             // RemoveButton
             // 
@@ -313,9 +313,9 @@
         private System.Windows.Forms.Panel AddPanel;
         private System.Windows.Forms.ListView ListViewComponents;
         private System.Windows.Forms.ColumnHeader ID;
-        private System.Windows.Forms.ColumnHeader NAME;
-        private System.Windows.Forms.ColumnHeader TYPE;
-        private System.Windows.Forms.ColumnHeader PATH;
+        private System.Windows.Forms.ColumnHeader TITLE;
+        private System.Windows.Forms.ColumnHeader DESCRIPTION;
+        private System.Windows.Forms.ColumnHeader FILENAME;
         private System.Windows.Forms.Button RemoveButton;
         private System.Windows.Forms.Button EditButton;
         private System.Windows.Forms.Button ViewButton;
