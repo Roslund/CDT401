@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using netComponent;
+using Newtonsoft.Json.Linq;
 
 namespace RepositoryComponent
 {
@@ -10,7 +12,46 @@ namespace RepositoryComponent
     {
         public bool AddComponent(Component component)
         {
-            throw new NotImplementedException();
+            IComponentParser parser;
+
+            // Check the file extention and load the apropiate parser
+            switch (component.FileName.Split('.').Last())
+            {
+                case "jar":
+                    throw new NotImplementedException();
+                    //parser = new JavaParser();
+                    break;
+                case "dll":
+                    parser = new DotNetParser();
+                    break;
+                default:
+                    return false;
+            }
+
+            // Parse the component
+            component.Metadata = parser.ParseComponentFile(component.Content);
+
+            // If the parsing failed we retry with the COM Parser
+            if (JObject.Parse(component.Metadata)["error"] != null)
+            {
+                //parser = new COMParser();
+                component.Metadata = parser.ParseComponentFile(component.Content);
+
+                // Check for errors Again
+                if (JObject.Parse(component.Metadata)["error"] != null)
+                {
+                    return false;
+                }
+            }
+
+            // Add and save the component
+            using (var db = new ComponentContext())
+            {
+                db.Components.Add(component);
+                db.SaveChanges();
+            }
+            return true;
+            
         }
 
         public (byte[] content, string fileName) DownloadComponent(int id)
@@ -32,12 +73,26 @@ namespace RepositoryComponent
 
         public bool RemoveComponent(int componentID)
         {
-            throw new NotImplementedException();
+            using (var db = new ComponentContext())
+            {
+                var component = db.Components.Find(componentID);
+                db.Components.Remove(component);
+                db.SaveChanges();
+            }
+
+            return true;
         }
 
         public bool UpdateComponent(Component component)
         {
-            throw new NotImplementedException();
+            using(var db = new ComponentContext())
+            {
+                var temp = db.Components.Find(component.Id);
+                temp = component;
+                db.SaveChanges();
+            }
+
+            return true;
         }
     }
 }
