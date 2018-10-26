@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetComponent", "netCompo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetComponentTests", "DotNetComponentTests\DotNetComponentTests.csproj", "{04BC0E29-8979-4AD2-B6CB-4FD774275CBB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminComponent", "AdminComponent\AdminComponent.csproj", "{7055D9C3-A39A-4839-BA33-9C24F058DC20}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{04BC0E29-8979-4AD2-B6CB-4FD774275CBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04BC0E29-8979-4AD2-B6CB-4FD774275CBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04BC0E29-8979-4AD2-B6CB-4FD774275CBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7055D9C3-A39A-4839-BA33-9C24F058DC20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7055D9C3-A39A-4839-BA33-9C24F058DC20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7055D9C3-A39A-4839-BA33-9C24F058DC20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7055D9C3-A39A-4839-BA33-9C24F058DC20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

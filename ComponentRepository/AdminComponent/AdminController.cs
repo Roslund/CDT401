@@ -43,17 +43,8 @@ namespace AdminComponent
 
         public AdminController()
         {
-            this.ComponentsList = new List<Component>();
-
-            // for test ---- 
-            Component test = new Component();
-            test.Id = 0;
-            test.LongDescription = "my life is patatos and this is a longggggggggggg descriptionjhsqluyvslhbhjvbhlfshblsdvbhklvsdbjklh";
-            test.ShortDescription = "My life is patatos";
-            test.Title = "PatatosComponent";
-            test.FileName = "patate.xml";
-
-            this.ComponentsList.Add(test);
+            IAdministrator repo = new RepositoryService();
+            ComponentsList = repo.GetComponents();
         }
 
     }
