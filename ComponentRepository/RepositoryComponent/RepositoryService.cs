@@ -92,7 +92,8 @@ namespace RepositoryComponent
             using(var db = new ComponentContext())
             {
                 var temp = db.Components.Find(component.Id);
-                temp = component;
+                db.Components.Remove(temp);
+                db.Components.Add(component);
                 db.SaveChanges();
             }
 
