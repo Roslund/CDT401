@@ -1,9 +1,12 @@
 package javacomponent;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.nio.file.Files;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 
@@ -57,15 +60,18 @@ public class JavaParser implements IComponentParser
 					
 					// The following check is done to know if there is at least one field or method
 					if(classObject.getDeclaredFields().length > 0)
-							contentArray.put(classObject.getDeclaredFields());
+						for(Field a : classObject.getDeclaredFields()) 
+							contentArray.put(a);					
 					if(classObject.getDeclaredMethods().length > 0)
-						contentArray.put(classObject.getDeclaredMethods());
+						for(Method a : classObject.getDeclaredMethods()) 
+							contentArray.put(a);
 					
 					if(classObject.isInterface())
 						interfacesDictionary.put(className, contentArray);
 					else
 						classesDictionary.put(className, contentArray);
 				}
+				
 				
 			}
 					
@@ -81,7 +87,7 @@ public class JavaParser implements IComponentParser
 		try 
 		{
 			// These statements are needed to create the JSON file 
-			file = new FileWriter("C:\\Users\\cautionContent\\Desktop\\file1.json");
+			file = new FileWriter("/home/xeder/Desktop/repository/javaComponent/file1.json");
 			file.write(obj.toString());  
 			file.close();
 			
