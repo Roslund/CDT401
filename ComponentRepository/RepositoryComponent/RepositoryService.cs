@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using netComponent;
 using Newtonsoft.Json.Linq;
 using javacomponent;
+using COMParserLib;
+using System.IO;
 
 namespace RepositoryComponent
 {
@@ -35,6 +37,9 @@ namespace RepositoryComponent
             {
                 //parser = new COMParser();
                 //component.Metadata = parser.parseComponent(component.Content);
+                COMParserLib.IParser comParser = new COMParserLib.Parser();
+                File.WriteAllBytes("./test.dll", component.Content);
+                component.Metadata = comParser.parseComponentFile("./test.dll");
 
                 // Check for errors Again
                 if (JObject.Parse(component.Metadata)["error"] != null)

@@ -1,0 +1,26 @@
+HKCR
+{
+	COMParser.Parser.1 = s 'Parser class'
+	{
+		CLSID = s '{fe983e84-138d-4125-a71c-896573d48820}'
+	}
+	COMParser.Parser = s 'Parser class'
+	{		
+		CurVer = s 'COMParser.Parser.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {fe983e84-138d-4125-a71c-896573d48820} = s 'Parser class'
+		{
+			ProgID = s 'COMParser.Parser.1'
+			VersionIndependentProgID = s 'COMParser.Parser'
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{77f22e4f-aec3-4d95-b801-c580301ef089}'
+			Version = s '1.0'
+		}
+	}
+}
