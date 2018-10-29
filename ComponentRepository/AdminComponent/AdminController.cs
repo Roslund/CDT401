@@ -13,8 +13,7 @@ namespace AdminComponent
         public IAdministrator repo = new RepositoryService();
 
         public AdminController()
-        {
-            
+        { 
             ComponentsList = repo.GetComponents();
         }
 

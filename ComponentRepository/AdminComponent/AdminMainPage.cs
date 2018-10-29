@@ -14,10 +14,12 @@ namespace AdminComponent
     public partial class AdminMainPage : Form
     {
         public AdminController AdminController;
+        public List<RepositoryComponent.Component> SearchComponentList;
 
         public AdminMainPage()
         {
             this.AdminController = new AdminController();
+            this.SearchComponentList = new List<RepositoryComponent.Component>();
             InitializeComponent();
             ViewButton.Enabled = false;
             EditButton.Enabled = false;
@@ -149,22 +151,45 @@ namespace AdminComponent
 
         private void RefreshButton_Click(object sender, EventArgs e)
         {
-            InitialisationListViewComponent();
+            searchTextBox.Clear();
+            InitialisationListViewComponent();         
         }
 
         private void Search_Click(object sender, EventArgs e)
         {
-            bool found = false;
+            //bool found = false;
+            //foreach (RepositoryComponent.Component component in AdminController.ComponentsList)
+            //{
+            //    if (component.Title == searchTextBox.Text)
+            //    {
+            //        MessageBox.Show("I found it ! ID = " + component.Id, "Confirm", MessageBoxButtons.OK);
+            //        found = true;
+            //    }
+            // }
+            // if(found == false)
+            //     MessageBox.Show("Not found ... ", "Confirm", MessageBoxButtons.OK);
+
+            this.SearchComponentList.Clear();
+
             foreach (RepositoryComponent.Component component in AdminController.ComponentsList)
             {
-                if (component.Title == searchTextBox.Text)
-                {
-                    MessageBox.Show("I found it ! ID = " + component.Id, "Confirm", MessageBoxButtons.OK);
-                    found = true;
-                }
+                if (component.Title.Contains(searchTextBox.Text))
+                    this.SearchComponentList.Add(component);
             }
-            if(found == false)
-                MessageBox.Show("Not found ... ", "Confirm", MessageBoxButtons.OK);
+
+            ListViewComponents.Items.Clear();
+
+            foreach (RepositoryComponent.Component component in this.SearchComponentList)
+            {
+                string[] newItemString = new string[4];
+                ListViewItem newItem;
+                newItemString[0] = component.Id.ToString();
+                newItemString[1] = component.Title;
+                newItemString[2] = component.FileName;
+                newItemString[3] = component.ShortDescription;
+                newItem = new ListViewItem(newItemString);
+                ListViewComponents.Items.Add(newItem);
+            }
         }
     }
 }
