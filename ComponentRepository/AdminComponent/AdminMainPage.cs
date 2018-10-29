@@ -129,7 +129,7 @@ namespace AdminComponent
             }
         }
 
-        private void InitialisationListViewComponent()
+        public void InitialisationListViewComponent()
         {
             ListViewComponents.Items.Clear();
             AdminController.getAllComponent();

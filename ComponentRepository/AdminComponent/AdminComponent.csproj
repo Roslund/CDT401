@@ -89,12 +89,6 @@
     <Compile Include="AddPage.Designer.cs">
       <DependentUpon>AddPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddPage2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddPage2.Designer.cs">
-      <DependentUpon>AddPage2.cs</DependentUpon>
-    </Compile>
     <Compile Include="AdminController.cs" />
     <Compile Include="AdminMainPage.cs">
       <SubType>Form</SubType>
@@ -102,25 +96,13 @@
     <Compile Include="AdminMainPage.Designer.cs">
       <DependentUpon>AdminMainPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Menu.Designer.cs">
-      <DependentUpon>Menu.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddPage.resx">
       <DependentUpon>AddPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddPage2.resx">
-      <DependentUpon>AddPage2.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="AdminMainPage.resx">
       <DependentUpon>AdminMainPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Menu.resx">
-      <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

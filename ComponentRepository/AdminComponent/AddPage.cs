@@ -82,19 +82,19 @@ namespace AdminComponent
                 if (modeActuel == 2)
                 {
                     adminControllerPage.editComponent(componentChoosen);
+                    AdminMainPage adminWindow = (AdminMainPage)Application.OpenForms["AdminMainPage"];
+                    adminWindow.InitialisationListViewComponent();
                     this.Close();
                 }
                 else
                 {
-                    Console.WriteLine("test 1");
                     var filePath = openFileDialog1.FileName;
-                    byte[] bytes = System.IO.File.ReadAllBytes(filePath); // convert en byte ....
-                    Console.WriteLine("test 2");
+                    byte[] bytes = System.IO.File.ReadAllBytes(filePath);
                     componentChoosen.Content = bytes;
                     componentChoosen.FileName = filePath.Split('\\').Last();
-                    Console.WriteLine("test 3");
                     adminControllerPage.addComponent(componentChoosen);
-                    Console.WriteLine("test 4");
+                    AdminMainPage adminWindow = (AdminMainPage)Application.OpenForms["AdminMainPage"];
+                    adminWindow.InitialisationListViewComponent();
                     this.Close();  
                 }
             }else
