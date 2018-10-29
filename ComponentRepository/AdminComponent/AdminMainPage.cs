@@ -138,6 +138,7 @@ namespace AdminComponent
         public void InitialisationListViewComponent()
         {
             ListViewComponents.Items.Clear();
+            AdminController.getAllComponent();
 
             foreach (RepositoryComponent.Component component in AdminController.ComponentsList)
             {

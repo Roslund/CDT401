@@ -74,7 +74,7 @@ namespace AdminComponent
         private void button2_Click(object sender, EventArgs e)
         {
             AdminMainPage ff = (AdminMainPage)Application.OpenForms["AdminMainPage"];
-            
+
 
             if (true)
             {
@@ -89,22 +89,16 @@ namespace AdminComponent
                 }
                 else
                 {
-                   try
-                    {
-                        Console.WriteLine("test 1");
-                        //byte[] bytes = System.IO.File.ReadAllBytes(openFileDialog1.FileName); // convert en byte ....
-                        Console.WriteLine("test 2");
-                        //componentChoosen.Content = bytes;
-                        Console.WriteLine("test 3");
-                        adminControllerPage.addComponent(componentChoosen);
-                        Console.WriteLine("test 4");
-                        ff.InitialisationListViewComponent();
-                        this.Close();
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Dossier non valide ..." + openFileDialog1.FileName, "OK", MessageBoxButtons.OK);
-                    }      
+                    Console.WriteLine("test 1");
+                    var filePath = openFileDialog1.FileName;
+                    byte[] bytes = System.IO.File.ReadAllBytes(filePath); // convert en byte ....
+                    Console.WriteLine("test 2");
+                    componentChoosen.Content = bytes;
+                    componentChoosen.FileName = filePath.Split('\\').Last();
+                    Console.WriteLine("test 3");
+                    adminControllerPage.addComponent(componentChoosen);
+                    Console.WriteLine("test 4");
+                    this.Close();
                 }
             }else
                 MessageBox.Show("Contents too shorts or too longs ...", "OK", MessageBoxButtons.OK);
@@ -112,7 +106,7 @@ namespace AdminComponent
 
         private void label2_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -125,7 +119,7 @@ namespace AdminComponent
             if ((LongTextBox.Text.Length > 2 && LongTextBox.Text.Length < 45)&&(ShortTextBox.Text.Length > 2 && ShortTextBox.Text.Length < 45) &&(TitleTextBox.Text.Length > 2 && TitleTextBox.Text.Length < 45))
                 return true;
             else
-                return false;      
+                return false;
         }
 
         private void selectButton_Click(object sender, EventArgs e)
