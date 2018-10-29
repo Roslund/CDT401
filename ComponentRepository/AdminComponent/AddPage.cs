@@ -88,9 +88,13 @@ namespace AdminComponent
                 {
                    try
                     {
+                        Console.WriteLine("test 1");
                         byte[] bytes = System.IO.File.ReadAllBytes(openFileDialog1.FileName); // convert en byte ....
+                        Console.WriteLine("test 2");
                         componentChoosen.Content = bytes;
+                        Console.WriteLine("test 3");
                         adminControllerPage.addComponent(componentChoosen);
+                        Console.WriteLine("test 4");
                         this.Close();
                     }
                     catch
