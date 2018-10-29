@@ -113,7 +113,7 @@ namespace AdminComponent
 
         private bool Verification()
         {
-            if ((LongTextBox.Text.Length > 2 && LongTextBox.Text.Length < 45)&&(ShortTextBox.Text.Length > 2 && ShortTextBox.Text.Length < 45) &&(TitleTextBox.Text.Length > 2 && TitleTextBox.Text.Length < 45))
+            if ((LongTextBox.Text.Length > 2 && LongTextBox.Text.Length < 545)&&(ShortTextBox.Text.Length > 2 && ShortTextBox.Text.Length < 545) &&(TitleTextBox.Text.Length > 2 && TitleTextBox.Text.Length < 100))
                 return true;
             else
                 return false;      
