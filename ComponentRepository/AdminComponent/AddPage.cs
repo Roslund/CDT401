@@ -86,21 +86,16 @@ namespace AdminComponent
                 }
                 else
                 {
-                   try
-                    {
-                        Console.WriteLine("test 1");
-                        byte[] bytes = System.IO.File.ReadAllBytes(openFileDialog1.FileName); // convert en byte ....
-                        Console.WriteLine("test 2");
-                        componentChoosen.Content = bytes;
-                        Console.WriteLine("test 3");
-                        adminControllerPage.addComponent(componentChoosen);
-                        Console.WriteLine("test 4");
-                        this.Close();
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Dossier non valide ..." + openFileDialog1.FileName, "OK", MessageBoxButtons.OK);
-                    }      
+                    Console.WriteLine("test 1");
+                    var filePath = openFileDialog1.FileName;
+                    byte[] bytes = System.IO.File.ReadAllBytes(filePath); // convert en byte ....
+                    Console.WriteLine("test 2");
+                    componentChoosen.Content = bytes;
+                    componentChoosen.FileName = filePath.Split('\\').Last();
+                    Console.WriteLine("test 3");
+                    adminControllerPage.addComponent(componentChoosen);
+                    Console.WriteLine("test 4");
+                    this.Close();  
                 }
             }else
                 MessageBox.Show("Contents too shorts or too longs ...", "OK", MessageBoxButtons.OK);
