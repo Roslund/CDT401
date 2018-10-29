@@ -98,6 +98,7 @@ namespace AdminComponent
                     EditButton.Enabled = false;
                     RemoveButton.Enabled = false;
                 }
+            InitialisationListViewComponent();
         }
 
         private void InitializePage()
