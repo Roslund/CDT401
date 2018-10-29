@@ -180,16 +180,21 @@ namespace AdminComponent
 
             ListViewComponents.Items.Clear();
 
-            foreach (RepositoryComponent.Component component in this.SearchComponentList)
+            if(searchTextBox.Text == "" || searchTextBox.Text == null)
+                InitialisationListViewComponent();
+            else
             {
-                string[] newItemString = new string[4];
-                ListViewItem newItem;
-                newItemString[0] = component.Id.ToString();
-                newItemString[1] = component.Title;
-                newItemString[2] = component.FileName;
-                newItemString[3] = component.ShortDescription;
-                newItem = new ListViewItem(newItemString);
-                ListViewComponents.Items.Add(newItem);
+                foreach (RepositoryComponent.Component component in this.SearchComponentList)
+                {
+                    string[] newItemString = new string[4];
+                    ListViewItem newItem;
+                    newItemString[0] = component.Id.ToString();
+                    newItemString[1] = component.Title;
+                    newItemString[2] = component.FileName;
+                    newItemString[3] = component.ShortDescription;
+                    newItem = new ListViewItem(newItemString);
+                    ListViewComponents.Items.Add(newItem);
+                }
             }
         }
     }
