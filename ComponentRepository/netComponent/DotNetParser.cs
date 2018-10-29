@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
 
 namespace netComponent
 {
@@ -14,45 +15,22 @@ namespace netComponent
             try
             {
                 Assembly assembly = Assembly.ReflectionOnlyLoad(file);
-                Console.WriteLine(assembly.ToString());
-                String classes = "{ 'classes' : {";
-                String interfaces = "'interfaces' : {";
+                JObject output = new JObject();
 
-                foreach (Type type in assembly.GetTypes())
+                var publicTypes = assembly.GetTypes().Where(type => type.IsPublic);
+                var publicClasses = publicTypes.Where(type => type.IsClass);
+                var publicInterfaces = publicTypes.Where(type => type.IsInterface);
+
+                Dictionary<string, string[]> MakeDictonary(IEnumerable<Type> types)
                 {
-                    if (type.IsClass && type.IsPublic)
-                    {
-                        classes += "'" + type.Name + "': [";
-
-                        foreach (var method in type.GetMethods())
-                        {
-                            if (method.IsPublic)
-                            {
-                                classes += "'" + method.ToString() + "',";
-                            }
-                        }
-                        classes += "] , ";
-                    }
-                    else if (type.IsInterface && type.IsPublic)
-                    {
-                        interfaces += "'" + type.Name + "': [";
-
-                        foreach (var method in type.GetMethods())
-                        {
-                            if (method.IsPublic)
-                            {
-                                interfaces += "'" + method.ToString() + "',";
-                            }
-                        }
-                        interfaces += "] , ";
-                    }
+                    return types.ToDictionary(type => type.Name, 
+                        type => type.GetMethods().Select(method => method.ToString()).ToArray());
                 }
 
-                classes += "},";
-                interfaces += "}}";
+                output["classes"] = JObject.FromObject(MakeDictonary(publicClasses));
+                output["interfaces"] = JObject.FromObject(MakeDictonary(publicInterfaces));
 
-                string jsonTemplate = classes + interfaces;
-                return jsonTemplate;
+                return output.ToString();
             }
             catch (BadImageFormatException)
             {
