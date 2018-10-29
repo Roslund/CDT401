@@ -44,11 +44,59 @@ namespace RepositoryComponentTest
             var repo = new RepositoryService();
             var testComponent = new Component
             {
-                Title = "System.ValueTuple",
-                ShortDescription = "This is a test component",
-                LongDescription = "this component test that the database connection works.",
-                FileName = "System.ValueTuple.dll",
-                Content = File.ReadAllBytes(@"C:\Users\Enari\source\repos\cdt401\ComponentRepository\RepositoryComponent\bin\Debug\System.ValueTuple.dll")
+                Title = "netComponent",
+                ShortDescription = "A .NET parser for reflection",
+                LongDescription = "This component implements a .NET parser to extract information about comcomponents and writes this informations into a JSON FILE",
+                FileName = "netComponent.dll",
+                Content = File.ReadAllBytes(@"C:\Users\Enari\source\repos\cdt401\ComponentRepository\RepositoryComponent\bin\Debug\netComponent.dll")
+            };
+            var result = repo.AddComponent(testComponent);
+            Assert.AreEqual(result, true);
+        }
+
+        [TestMethod]
+        public void TestValidDotNETComponentRepositoryComponent()
+        {
+            var repo = new RepositoryService();
+            var testComponent = new Component
+            {
+                Title = "RepositoryComponent",
+                ShortDescription = "This component is the main component.",
+                LongDescription = "He provides users’and admin’s interfaces and manages all functionalities of the application. He also managestransactions carried out on the database.",
+                FileName = "RepositoryComponent.dll",
+                Content = File.ReadAllBytes(@"C:\Users\Enari\source\repos\cdt401\ComponentRepository\RepositoryComponent\bin\Debug\RepositoryComponent.dll")
+            };
+            var result = repo.AddComponent(testComponent);
+            Assert.AreEqual(result, true);
+        }
+
+        [TestMethod]
+        public void Testjar()
+        {
+            var repo = new RepositoryService();
+            var testComponent = new Component
+            {
+                Title = "JAR",
+                ShortDescription = "asdf",
+                LongDescription = "asdf",
+                FileName = "a.jar",
+                Content = File.ReadAllBytes(@"C:\Users\Enari\source\repos\cdt401\ComponentRepository\javaComponent\lib\json.jar")
+            };
+            var result = repo.AddComponent(testComponent);
+            Assert.AreEqual(result, true);
+        }
+
+        [TestMethod]
+        public void TestCOM()
+        {
+            var repo = new RepositoryService();
+            var testComponent = new Component
+            {
+                Title = "COM",
+                ShortDescription = "asdf",
+                LongDescription = "asdf",
+                FileName = "test.dll",
+                Content = File.ReadAllBytes(@"C:\Users\Enari\source\repos\cdt401\ComponentRepository\COMParser\TestDLLS\test.dll")
             };
             var result = repo.AddComponent(testComponent);
             Assert.AreEqual(result, true);

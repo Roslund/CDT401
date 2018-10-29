@@ -73,7 +73,10 @@ namespace AdminComponent
         //Validation button Click
         private void button2_Click(object sender, EventArgs e)
         {
-            if (Verification())
+            AdminMainPage ff = (AdminMainPage)Application.OpenForms["AdminMainPage"];
+            
+
+            if (true)
             {
                 componentChoosen.LongDescription = LongTextBox.Text;
                 componentChoosen.ShortDescription = ShortTextBox.Text;
@@ -89,12 +92,13 @@ namespace AdminComponent
                    try
                     {
                         Console.WriteLine("test 1");
-                        byte[] bytes = System.IO.File.ReadAllBytes(openFileDialog1.FileName); // convert en byte ....
+                        //byte[] bytes = System.IO.File.ReadAllBytes(openFileDialog1.FileName); // convert en byte ....
                         Console.WriteLine("test 2");
-                        componentChoosen.Content = bytes;
+                        //componentChoosen.Content = bytes;
                         Console.WriteLine("test 3");
                         adminControllerPage.addComponent(componentChoosen);
                         Console.WriteLine("test 4");
+                        ff.InitialisationListViewComponent();
                         this.Close();
                     }
                     catch

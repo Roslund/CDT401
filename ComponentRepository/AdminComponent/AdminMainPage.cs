@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using RepositoryComponent;
+//using RepositoryComponent;
 
 namespace AdminComponent
 {
@@ -115,6 +115,12 @@ namespace AdminComponent
         {
             AddPage AddPage = new AddPage(this.AdminController);
             AddPage.Show();
+            if (AddPage.DialogResult == DialogResult.OK)
+            {
+                Console.WriteLine("fermé");
+            }
+            else
+                Console.WriteLine("nop");
         }
 
         private void ListViewComponents_SelectedIndexChanged(object sender, EventArgs e)
@@ -129,7 +135,7 @@ namespace AdminComponent
             }
         }
 
-        private void InitialisationListViewComponent()
+        public void InitialisationListViewComponent()
         {
             ListViewComponents.Items.Clear();
 
@@ -164,6 +170,11 @@ namespace AdminComponent
             }
             if(found == false)
                 MessageBox.Show("Not found ... ", "Confirm", MessageBoxButtons.OK);
+        }
+
+        private void AdminMainPage_Activated(object sender, EventArgs e)
+        {
+           // InitialisationListViewComponent();
         }
     }
 }

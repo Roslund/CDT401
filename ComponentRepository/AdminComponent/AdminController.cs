@@ -22,11 +22,11 @@ namespace AdminComponent
         {
             // send the new component with : (componentAdd)
             Console.WriteLine("test 1000");
-            repo.AddComponent(componentAdd);
+           // repo.AddComponent(componentAdd);
             Console.WriteLine("test 1001");
             //for test :
-            //componentAdd.Id = ComponentsList.Count;
-            //this.ComponentsList.Add(componentAdd);
+            componentAdd.Id = ComponentsList.Count;
+            this.ComponentsList.Add(componentAdd);
         }
 
         public void removeCompoennt(int id)

@@ -45,8 +45,8 @@
             this.ListViewComponents = new System.Windows.Forms.ListView();
             this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TITLE = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.DESCRIPTION = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FILENAME = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DESCRIPTION = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.RemoveButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
             this.ViewButton = new System.Windows.Forms.Button();
@@ -218,15 +218,15 @@
             this.TITLE.Text = "TITLE";
             this.TITLE.Width = 150;
             // 
-            // DESCRIPTION
-            // 
-            this.DESCRIPTION.Text = "DESCRIPTION";
-            this.DESCRIPTION.Width = 240;
-            // 
             // FILENAME
             // 
             this.FILENAME.Text = "FILENAME";
             this.FILENAME.Width = 150;
+            // 
+            // DESCRIPTION
+            // 
+            this.DESCRIPTION.Text = "DESCRIPTION";
+            this.DESCRIPTION.Width = 240;
             // 
             // RemoveButton
             // 
@@ -282,7 +282,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(560, 352);
+            this.ClientSize = new System.Drawing.Size(557, 352);
             this.Controls.Add(this.RefreshButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.ViewButton);
@@ -296,6 +296,7 @@
             this.Controls.Add(this.Search);
             this.Name = "AdminMainPage";
             this.Text = "AdminMainPage";
+            this.Activated += new System.EventHandler(this.AdminMainPage_Activated);
             this.Load += new System.EventHandler(this.AdminMainPage_Load);
             this.AddPanel.ResumeLayout(false);
             this.AddPanel.PerformLayout();
