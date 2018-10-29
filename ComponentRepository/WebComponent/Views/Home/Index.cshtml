@@ -1,19 +1,27 @@
 ﻿@{
     ViewBag.Title = "Component Repository";
 }
-<div class="row">
-    <div class="col-sm-8">
+<div class="row" style=" display: flex;display: -webkit-flex;flex-wrap: wrap;">
+    <div class="col-sm-4">
         <h1>Components</h1>
     </div>
-    <div class="col-sm-4">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for...">
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Go!</button>
-            </span>
-        </div><!-- /input-group -->
+    <div class="col-sm-3" style="margin-left: auto;">
+        <form>
+            <div class="input-group" style="margin-top:25px;">
+                <input type="search" class="form-control" name="search" placeholder="Search title">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">Go!</button>
+                </span>
+            </div><!-- /input-group -->
+        </form>
     </div>
 </div>
+@if ((ViewBag.Components as List<RepositoryComponent.Component>).Count == 0)
+{
+<div class="alert alert-warning" role="alert">
+    <strong>No components found!</strong>
+</div>
+}
 @foreach (var component in ViewBag.Components as List<RepositoryComponent.Component>) {
 <!-- Component Pannel -->
 <div class="panel panel-default">

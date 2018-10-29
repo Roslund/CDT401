@@ -9,10 +9,18 @@ namespace WebComponent.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string search)
         {
             IWeb repo = new RepositoryService();
-            ViewBag.Components = repo.GetComponents();
+            if (search != null)
+            {
+                ViewBag.Components = repo.GetComponents().Where(component => component.Title.Contains(search)).ToList();
+            }
+            else
+            {
+                ViewBag.Components = repo.GetComponents();
+            }
+
             return View();
         }
 
