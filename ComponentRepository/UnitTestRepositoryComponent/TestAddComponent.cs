@@ -80,7 +80,7 @@ namespace RepositoryComponentTest
                 ShortDescription = "asdf",
                 LongDescription = "asdf",
                 FileName = "a.jar",
-                Content = File.ReadAllBytes(@"C:\Users\Enari\source\repos\cdt401\ComponentRepository\javaComponent\lib\javaComponent.jar")
+                Content = File.ReadAllBytes(@"C:\Users\Enari\source\repos\cdt401\ComponentRepository\javaComponent\lib\json.jar")
             };
             var result = repo.AddComponent(testComponent);
             Assert.AreEqual(result, true);
