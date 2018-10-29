@@ -69,5 +69,37 @@ namespace RepositoryComponentTest
             var result = repo.AddComponent(testComponent);
             Assert.AreEqual(result, true);
         }
+
+        [TestMethod]
+        public void Testjar()
+        {
+            var repo = new RepositoryService();
+            var testComponent = new Component
+            {
+                Title = "JAR",
+                ShortDescription = "asdf",
+                LongDescription = "asdf",
+                FileName = "a.jar",
+                Content = File.ReadAllBytes(@"C:\Users\Enari\source\repos\cdt401\ComponentRepository\javaComponent\lib\json.jar")
+            };
+            var result = repo.AddComponent(testComponent);
+            Assert.AreEqual(result, true);
+        }
+
+        [TestMethod]
+        public void TestCOM()
+        {
+            var repo = new RepositoryService();
+            var testComponent = new Component
+            {
+                Title = "COM",
+                ShortDescription = "asdf",
+                LongDescription = "asdf",
+                FileName = "test.dll",
+                Content = File.ReadAllBytes(@"C:\Users\Enari\source\repos\cdt401\ComponentRepository\COMParser\TestDLLS\test.dll")
+            };
+            var result = repo.AddComponent(testComponent);
+            Assert.AreEqual(result, true);
+        }
     }
 }

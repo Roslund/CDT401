@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using netComponent;
 using Newtonsoft.Json.Linq;
+using javacomponent;
+using COMParserLib;
+using System.IO;
 
 namespace RepositoryComponent
 {
@@ -12,30 +15,31 @@ namespace RepositoryComponent
     {
         public bool AddComponent(Component component)
         {
-            IComponentParser parser;
 
             // Check the file extention and load the apropiate parser
             switch (component.FileName.Split('.').Last())
             {
                 case "jar":
-                    throw new NotImplementedException();
-                    //parser = new JavaParser();
+                    //throw new NotImplementedException();
+                    javacomponent.IComponentParser javaParser = new JavaParser();
+                    component.Metadata = javaParser.parseComponent(component.Content);
                     break;
                 case "dll":
-                    parser = new DotNetParser();
+                    netComponent.IComponentParser dotNetParser = new DotNetParser();
+                    component.Metadata = dotNetParser.ParseComponentFile(component.Content);
                     break;
                 default:
                     return false;
             }
 
-            // Parse the component
-            component.Metadata = parser.ParseComponentFile(component.Content);
-
             // If the parsing failed we retry with the COM Parser
             if (JObject.Parse(component.Metadata)["error"] != null)
             {
                 //parser = new COMParser();
-                component.Metadata = parser.ParseComponentFile(component.Content);
+                //component.Metadata = parser.parseComponent(component.Content);
+                COMParserLib.IParser comParser = new COMParserLib.Parser();
+                File.WriteAllBytes("./test.dll", component.Content);
+                component.Metadata = comParser.parseComponentFile("./test.dll");
 
                 // Check for errors Again
                 if (JObject.Parse(component.Metadata)["error"] != null)
